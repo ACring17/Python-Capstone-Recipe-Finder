@@ -6,17 +6,17 @@ app =Flask(__name__)
 def index():
     return "<h1>Welcome to Recipe Finder!</h1>"
 
-@app.route('/profile')
-def profile():
-    return "User's profile"
+@app.route('/profile/<name>')
+def profile(name):
+    return f"User's profile: {name}"
 
-@app.route('/recipe')
-def recipe():
-    return "Search for recipes"
+@app.route('/recipe/<search>')
+def recipe(search):
+    return f"Search for recipes: {search}"
 
-@app.route('/ingredient')
-def ingredient():
-    return "Search for recipes by ingredient"
+@app.route('/ingredient/<search>')
+def ingredient(search):
+    return f"Search for recipes by ingredient: {search}"
 
 
 if __name__=='__main__':
