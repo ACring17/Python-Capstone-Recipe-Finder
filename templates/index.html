@@ -9,8 +9,11 @@
 </head>
 
 <body>
+    {% if user_logged_in %}
     <h1>Welcome to Recipe Finder</h1>
-
+    {% else %}
+    <h1>You are not logged in.</h1>
+    {% endif %}
     <script src="" async defer></script>
 </body>
 
