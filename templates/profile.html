@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <nav>
+        <a href="{{url_for('index')}}"></a>
+        <a href="{{url_for('recipe')}}"></a>
+        <a href="{{url_for('ingredient')}}"></a>
+    </nav>
+
     {% if user_logged_in %}
     <h1>Welcome to your profile page on Recipe Finder</h1>
     {% else %}

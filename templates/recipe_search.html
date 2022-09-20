@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <nav>
+        <a href="{{url_for('index')}}"></a>
+        <a href="{{url_for('profile')}}"></a>
+        <a href="{{url_for('ingredient')}}"></a>
+    </nav>
+
     <ul>
         {% for recipe in recipeList}
         <li>{{recipe}}</li>
