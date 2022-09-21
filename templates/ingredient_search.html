@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Recipe Finder Ingredient Search</title>
-    <meta name="description" content="Search results from ingredient search">
-    <link rel="stylesheet" href="">
-</head>
-
-<body>
-    <nav>
-        <a href="{{url_for('index')}}"></a>
-        <a href="{{url_for('profile')}}"></a>
-        <a href="{{url_for('recipe')}}"></a>
-    </nav>
-
+{% extends "base.html" %}
+{% block content %}
     <ul>
         {% for ingredient in ingredientList}
         <li>{{ingredient}}</li>
         {%endfor%}
     </ul>
 
-    <script src="" async defer></script>
-</body>
-
-</html>
+{% endblock %}
