@@ -16,9 +16,16 @@ def index():
     user_logged_in = True
     return render_template('index.html', user_logged_in=user_logged_in)
 
-@app.route('/profile/<name>')
+@app.route('/profile/<firstname>',methods=['GET','POST'])
 def profile(name):
-    return f"User's profile: {name}"
+    firstname = False
+    lastname = False
+    form = InfoForm()
+
+    if form.validate_on_submit():
+        firstname = form.firstname.data
+        form.firstname.data = ''
+    return render_template('profile.html', form=form, firstname=firstname, lastname=lastname)
 
 @app.route('/recipe/<search>')
 def recipe(search):
