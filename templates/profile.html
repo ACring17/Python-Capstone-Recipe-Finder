@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-
-    {% if user_logged_in %}
-    <h1>Welcome to your profile page on Recipe Finder</h1>
+<h1>Welcome to your profile page on Recipe Finder</h1>
+    {% if firstname %}
+    <p>Hello, {{firstname}} welcome to Recipe Finder!
     {% else %}
-    <h1>You are not logged in.</h1>
+    Please enter your first name:
     {% endif %}
 
+    <form method="POST">
+        {{form.hidden_tag() }}
+        {{form.firstname.label}}{{form.firstname() }}
+        {{form.submit() }}
+    </form>
 {% endblock %}

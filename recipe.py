@@ -25,7 +25,7 @@ def profile(name):
     if form.validate_on_submit():
         firstname = form.firstname.data
         form.firstname.data = ''
-    return render_template('profile.html', form=form, firstname=firstname, lastname=lastname)
+    return render_template('home.html', form=form, firstname=firstname, lastname=lastname)
 
 @app.route('/recipe/<search>')
 def recipe(search):
