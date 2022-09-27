@@ -1,6 +1,15 @@
 from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import SpringField,SubmitField
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'mysecretkey'
+
+class InfoForm(FlaskForm):
+    firstname = StringField("First Name")
+    lastname = StringField("Last Name")
+    submit = SubmitField("Submit")
 
 @app.route('/')
 def index():
