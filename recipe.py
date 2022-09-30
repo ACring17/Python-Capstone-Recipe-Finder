@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField,BooleanField,DateTimeField,RadioField,SelectField,TextAreaField,TextField
 from wtforms.validators import DataRequired
-# The Path for the db
+# Set up the base directory
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
@@ -15,6 +15,25 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
+
+class Recipes(db.Model):
+
+    __tablename__ = 'users'
+
+    id = db.Column(db.Interger,primary_key=True)
+    username = db.Column(db.Text)
+    password = db.Column(db.Text)
+    name = db.Column(db.Text)
+
+    def __init__(self,username,password,name):
+        self.username = username
+        self.password = password
+        self.name = name
+    # String represenation of the db
+    def __repr__(self):
+        return f"Welcome {self.name} to Recipe Finder"
+
+
 # Form set up
 class InfoForm(FlaskForm):
     firstname = StringField("First Name")
