@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf import FlaskForm
-from wtforms import StringField,SubmitField,BooleanField,DateTimeField,RadioField,SelectField,TextAreaField,TextField
+from wtforms import StringField,SubmitField#,BooleanField,DateTimeField,RadioField,SelectField,TextAreaField,TextField
 from wtforms.validators import DataRequired
 # Set up the base directory
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -15,13 +15,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Connecting the SQL
 db = SQLAlchemy(app)
 
+Migrate(app,db)
+
 app.config['SECRET_KEY'] = 'mysecretkey'
 
 class Recipes(db.Model):
 
     __tablename__ = 'users'
 
-    id = db.Column(db.Interger,primary_key=True)
+    id = db.Column(db.Integer,primary_key=True)
     username = db.Column(db.Text)
     password = db.Column(db.Text)
     name = db.Column(db.Text)
