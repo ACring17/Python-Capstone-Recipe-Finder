@@ -49,7 +49,7 @@ def index():
     user_logged_in = True
     return render_template('index.html', user_logged_in=user_logged_in)
 
-@app.route('/profile/<firstname>',methods=['GET','POST'])
+@app.route('/profile/',methods=['GET','POST'])
 def profile(name):
     firstname = False
     lastname = False
@@ -60,7 +60,7 @@ def profile(name):
         lastname = form.lastname.data
         form.firstname.data = ''
         form.lastname.data = ''
-    return render_template('profile.html', form=form, firstname=firstname, lastname=lastname)
+    return render_template('profile.html')#, form=form, firstname=firstname, lastname=lastname)
 
 @app.route('/recipe/<search>')
 def recipe(search):
@@ -77,4 +77,4 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__=='__main__':
-    app.run(debug=False) #debug mode
+    app.run(debug=True) #debug mode
