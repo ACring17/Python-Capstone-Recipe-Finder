@@ -49,7 +49,7 @@ def index():
     user_logged_in = True
     return render_template('index.html', user_logged_in=user_logged_in)
 
-@app.route('/profile/',methods=['GET','POST'])
+@app.route('/profile/<firstname>',methods=['GET','POST'])
 def profile(name):
     firstname = False
     lastname = False
