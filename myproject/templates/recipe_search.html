@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <ul>
+        {% for recipe in recipeList %}
+        <li>{{recipe}}</li>
+        {%endfor%}
+    </ul>
+
+    {% if search in recipeList %}
+    <!--If else statement for templates showing the search results if the search matches the dataset?-->
+    <li>{{search}}</li>
+    <p></p>
+    {% else %}
+    <p>Sorry there is no recipe that fits that name. Try searching by ingredients.</p>
+    {% end if %}
+
+{% endblock %}

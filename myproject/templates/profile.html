@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to your profile page on Recipe Finder</h1>
+    {% comment %} {% if firstname %}
+    <p>Hello, {{firstname}} welcome to Recipe Finder!
+    {% else %}
+    Please enter your first name:
+    {% endif %}
+
+    <form method="POST">
+        {{form.hidden_tag() }}
+        {{form.firstname.label}}{{form.firstname() }}
+        {{form.submit() }}
+    </form> {% endcomment %}
+{% endblock %}
