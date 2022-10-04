@@ -37,7 +37,6 @@ class Recipes(db.Model):
         return f"Recipe name: {self.name}, Description: {self.description}, Directions: {self.direction}"
 
 
-
 class Ingredient(db.Model):
 
     __tablename__ = 'ingredients'
@@ -51,3 +50,39 @@ class Ingredient(db.Model):
     def __repr__(self):
         return f"Indredients you have: {self.name}"
 
+
+#Joining tables
+class Rating(db.Model):
+
+    __tablename__ = 'ratings'
+
+    recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'))
+    ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'))
+    rating = db.Column(db.Integer)
+    reveiw = db.Column(db.Text)
+
+    def __init__(self,recipe_id,ingredient_id,rating,review):
+        self.recipe_id = recipe_id
+        self.ingredient_id = ingredient_id
+        self.rating = rating
+        self.review = review
+
+    def __repr__(self):
+        return f"Recipe:{self.recipe_id}, Ingredients:{self.ingredient_id}, Rating: {self.rating}, Review:{self.review}"
+
+
+class Measurement(db.Model):
+
+    __tablename__ = 'measurements'
+
+    recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'))
+    ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'))
+    quantity = db.Column(db.Integer)
+
+    def __init__(self,recipe_id,ingredient_id,quantity):
+        self.recipe_id = recipe_id
+        self.ingredient_id = ingredient_id
+        self.quantity = quantity
+
+    def __repr__(self):
+        return f"Recipe:{self.recipe_id}, Ingredients:{self.ingredient_id}, Quantitity: {self.quantity}"
