@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Do you wish to remove a recipe?</h1>
+  <p>Fill out the form to remove the recipe from the list.</p>
+  <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      {{ form.id.label }} {{ form.id() }}
+      {{ form.submit() }}
+  </form>
+</div>
+{% endblock %}
