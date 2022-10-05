@@ -1,16 +1,11 @@
 from myproject import app
-from flask import render_template
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 if __name__=='__main__':
     app.run(debug=True) #debug mode
 
 
 
-# Saving this for later
+# # Saving this for later
 
 # # Form set up
 # class InfoForm(FlaskForm):
