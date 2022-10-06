@@ -9,7 +9,7 @@ from flask_login import LoginManager
 app = Flask(__name__)
 
 ## Database Setup ##
-basedir = os.path.abspath(os.path.dirname(__file))
+basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLACHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
 app.config['SQLACHEMY_TRACK_MODIFICATIONS'] = False
 
