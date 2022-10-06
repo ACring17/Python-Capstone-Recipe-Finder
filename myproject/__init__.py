@@ -1,7 +1,8 @@
 # Where the blueprints will be registered
 import os
+from socket import fromfd
 from flask import Flask
-import flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
