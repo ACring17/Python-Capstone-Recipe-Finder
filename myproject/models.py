@@ -70,8 +70,8 @@ class Rating(db.Model):
 
     __tablename__ = 'ratings'
 
-    recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'))
-    ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'))
+    recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'),nullable=False)
+    ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'),nullable=False)
     rating = db.Column(db.Integer)
     reveiw = db.Column(db.Text)
 
@@ -89,8 +89,8 @@ class Measurement(db.Model):
 
     __tablename__ = 'measurements'
 
-    recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'))
-    ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'))
+    recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'),nullable=False)
+    ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'),nullable=False)
     quantity = db.Column(db.Integer)
 
     def __init__(self,recipe_id,ingredient_id,quantity):
