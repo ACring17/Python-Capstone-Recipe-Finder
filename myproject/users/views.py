@@ -66,3 +66,10 @@ def profile():
         form.username.data = current_user.username
         
     return render_template('profile.html',form=form)
+
+@users.route("/<username>")
+def user_posts(username):
+    page = request.args.get('page',1,type=int)
+    user = Users.query.filter_by(username=username).first_or_404()
+    recipe_posts = Rating.query.filter_by(rater=user).order_by(Recipes.id.desc()).paginate(page=page,per_page=20)
+    return render_template('ratings.html', recipe_posts=recipe_posts,user=user)
