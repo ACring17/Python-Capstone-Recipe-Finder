@@ -49,3 +49,20 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for("core.index"))
+
+#User profile page
+@users.route('/profile',methods=['GET','POST'])
+@login_required
+def profile():
+
+    form = UpdateUserForm()
+    if form.validate_on_submit():
+        
+        current_user.username = form.username.data
+        db.session.commit()
+        return redirect(url_for('users.profile'))
+    
+    elif request.method == "GET":
+        form.username.data = current_user.username
+        
+    return render_template('profile.html',form=form)
