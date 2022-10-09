@@ -1,6 +1,5 @@
 #Where the models will be housed
 from myproject import db,login_manager
-# from myproject.core.views import index
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin 
 
