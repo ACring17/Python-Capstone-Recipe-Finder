@@ -1,7 +1,6 @@
 #Where the models will be housed
-from enum import unique
 from myproject import db,login_manager
-from myproject.core.views import index
+# from myproject.core.views import index
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin 
 
@@ -70,6 +69,9 @@ class Rating(db.Model):
 
     __tablename__ = 'ratings'
 
+    recipes = db.relationship(Recipes)
+    ingredients = db.relationship(Ingredient)
+
     recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'),nullable=False)
     ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'),nullable=False)
     rating = db.Column(db.Integer)
@@ -88,6 +90,9 @@ class Rating(db.Model):
 class Measurement(db.Model):
 
     __tablename__ = 'measurements'
+
+    recipes = db.relationship(Recipes)
+    ingredients = db.relationship(Ingredient)
 
     recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'),nullable=False)
     ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'),nullable=False)
