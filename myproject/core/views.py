@@ -8,13 +8,13 @@ def index():
     return render_template('index.html')
 
 @core.route('/recipes')
-def recipe():
+def recipes():
     return render_template('recipes.html')
 
 @core.route('/ingredient')
-def recipe():
+def ingredient():
     return render_template('ingredient.html')
 
 @core.route('/profile')
-def recipe():
+def profile():
     return render_template('profile.html')
