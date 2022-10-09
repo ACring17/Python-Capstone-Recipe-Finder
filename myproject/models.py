@@ -73,12 +73,14 @@ class Rating(db.Model):
 
     recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'),nullable=False)
     ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'),nullable=False)
+    rating_id = db.Column(db.Integer,primary_key=True)
     rating = db.Column(db.Integer)
     reveiw = db.Column(db.Text)
 
-    def __init__(self,recipe_id,ingredient_id,rating,review):
+    def __init__(self,recipe_id,ingredient_id,rating_id,rating,review):
         self.recipe_id = recipe_id
         self.ingredient_id = ingredient_id
+        self.rating_id = rating_id
         self.rating = rating
         self.review = review
 
@@ -95,11 +97,13 @@ class Measurement(db.Model):
 
     recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'),nullable=False)
     ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'),nullable=False)
+    measurement_id = db.Column(db.Integer,primary_key=True)
     quantity = db.Column(db.Integer)
 
-    def __init__(self,recipe_id,ingredient_id,quantity):
+    def __init__(self,recipe_id,ingredient_id, measurement_id ,quantity):
         self.recipe_id = recipe_id
         self.ingredient_id = ingredient_id
+        self.measurement_id = measurement_id
         self.quantity = quantity
 
     def __repr__(self):
