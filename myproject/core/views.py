@@ -7,9 +7,9 @@ def index():
     #Will pass in data base list
     return render_template('index.html')
 
-@core.route('/recipe')
+@core.route('/recipes')
 def recipe():
-    return render_template('recipe.html')
+    return render_template('recipes.html')
 
 @core.route('/ingredient')
 def recipe():
