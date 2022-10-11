@@ -7,10 +7,10 @@ class SearchIngredient(FlaskForm):
 
 class AddForm(FlaskForm):
     name = StringField('Name for your ingredient?')
-    submit = SubmitField('Add Ingredient')
+    submit = SubmitField('Add ingredient')
 
 
 class DelForm(FlaskForm):
 
-    id = IntegerField('Id Number of Ingredient to Remove:')
-    submit = SubmitField('Remove ')
+    id = IntegerField('Id Number of ingredient to Remove:')
+    submit = SubmitField('Remove ingredient')
