@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template,redirect,url_for
 from myproject import db
-from myproject.recipes.forms import AddForm,DelForm
+from myproject.recipes.forms import AddRecipeForm,DelRecipeForm,UpdateRecipeForm
 from myproject.models import Recipes
 
 recipes_blueprint = Blueprint('recipes',
@@ -9,7 +9,7 @@ recipes_blueprint = Blueprint('recipes',
 
 @recipes_blueprint.route('/add', methods=['GET', 'POST'])
 def add():
-    form = AddForm()
+    form = AddRecipeForm()
 
     if form.validate_on_submit():
         name = form.name.data
@@ -32,7 +32,7 @@ def list():
 @recipes_blueprint.route('/delete', methods=['GET', 'POST'])
 def delete():
 
-    form = DelForm()
+    form = DelRecipeForm()
 
     if form.validate_on_submit():
         id = form.id.data
@@ -42,3 +42,20 @@ def delete():
 
         return redirect(url_for('recipes.list'))
     return render_template('delete.html',form=form)
+
+
+@recipes_blueprint.route('/update', methods=['GET', 'POST'])
+def update():
+    form = UpdateRecipeForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+
+        # Update new Recipe to database
+        new_recipe = Recipes(name)
+        db.session.add(new_recipe)
+        db.session.commit()
+
+        return redirect(url_for('recipes.list'))
+
+    return render_template('add.html',form=form)
