@@ -24,8 +24,8 @@
         <li class='nav-link'><a href="{{url_for('users.profile')}}">Profile</a></li>
         <li class='nav-link'><a href="#">Add Recipe</a></li>
         {% else %}
-        <li class='nav-link'><a href="#">Log in</a></li>
-        <li class='nav-link'><a href="#">Register</a></li>
+        <li class='nav-link'><a href="{{url_for('users.login')}}">Log in</a></li>
+        <li class='nav-link'><a href="{{url_for('users.register')}}">Register</a></li>
         {% endif %}
         </ul>
     </nav>
