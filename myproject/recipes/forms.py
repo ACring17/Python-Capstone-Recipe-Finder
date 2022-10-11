@@ -32,8 +32,12 @@ class UpdateRecipeForm(FlaskForm):
             raise ValidationError('Your recipe has been registered already!')
 
 
-class DelForm(FlaskForm):
+class DelRecipeForm(FlaskForm):
 
-    id = IntegerField('Id Number of Recipe to Remove:')
+    name = StringField('username',validators=[DataRequired()])
     submit = SubmitField('Remove Recipe')
+
+    def check_recipe(self,field):
+        if Recipes.query.filter_by(name=field.data).first():
+            raise ValidationError('Your recipe has been removed!')
 
