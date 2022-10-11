@@ -13,4 +13,4 @@ class AddForm(FlaskForm):
 class DelForm(FlaskForm):
 
     id = IntegerField('Id Number of Ingredient to Remove:')
-    submit = SubmitField('Remove Ingredient')
+    submit = SubmitField('Remove ')
