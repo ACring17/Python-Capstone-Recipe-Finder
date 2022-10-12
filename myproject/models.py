@@ -16,7 +16,7 @@ class Users(db.Model,UserMixin):
     name = db.Column(db.String(65),index=True)
     password_hash = db.Column(db.String(128))
 
-    rated_recipes = db.relationship('Recipes',backref='rater',lazy=True)
+    rated_recipes = db.relationship('Rating',backref='rater',lazy=True)#Hitting bug with connecting db when registering user
 
     def __init__(self,username,password,name):
         self.username = username
@@ -69,17 +69,17 @@ class Rating(db.Model):
     __tablename__ = 'ratings'
 
     recipes = db.relationship(Recipes)
-    ingredients = db.relationship(Ingredient)
+    user = db.relationship(Users)
 
     recipe_id = db.Column(db.Integer,db.ForeignKey('recipes.id'),nullable=False)
-    ingredient_id = db.Column(db.Integer,db.ForeignKey('ingredients.id'),nullable=False)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
     rating_id = db.Column(db.Integer,primary_key=True)
     rating = db.Column(db.Integer)
     reveiw = db.Column(db.Text)
 
-    def __init__(self,recipe_id,ingredient_id,rating_id,rating,review):
+    def __init__(self,recipe_id,user_id,rating_id,rating,review):
         self.recipe_id = recipe_id
-        self.ingredient_id = ingredient_id
+        self.user_id = user_id
         self.rating_id = rating_id
         self.rating = rating
         self.review = review
