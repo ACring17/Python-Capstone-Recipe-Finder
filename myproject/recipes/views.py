@@ -1,27 +1,27 @@
 from flask import Blueprint,render_template,redirect,url_for,request,redirect
-from myproject import db
-from myproject.recipes.forms import AddRecipeForm,DelRecipeForm,UpdateRecipeForm
+from flask_login import current_user,login_required
 from myproject import db
 from myproject.models import Recipes
 from myproject.recipes.forms import SearchRecipe,AddRecipeForm,UpdateRecipeForm,DelRecipeForm
 
 recipes = Blueprint('recipes',__name__)
 
-@recipes.route('/add', methods=['GET', 'POST'])
-def add():
+@recipes.route('/create', methods=['GET', 'POST'])
+@login_required
+def create_recipe():
     form = AddRecipeForm()
 
     if form.validate_on_submit():
-        name = form.name.data
+        recipe = Recipes(name=form.name.data,
+                        direction=form.direction.data,
+                        user_id=current_user.id)
 
         # Add new Recipe to database
-        new_recipe = Recipes(name)
-        db.session.add(new_recipe)
+        db.session.add(recipe)
         db.session.commit()
+        return redirect(url_for('core.index'))
 
-        return redirect(url_for('recipes.list'))
-
-    return render_template('add.html',form=form)
+    return render_template('add.html',form=form) #Left off here, need to make sure template is created
 
 @recipes.route('/list')
 def list():
