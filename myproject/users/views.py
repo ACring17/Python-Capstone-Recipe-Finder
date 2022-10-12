@@ -13,7 +13,8 @@ def register():
 
     if form.validate_on_submit():
         user = Users(username=form.username.data,
-                    password=form.password.data)
+                    password=form.password.data,
+                    name=form.name.data)
 
         db.session.add(user)
         db.session.commit()
