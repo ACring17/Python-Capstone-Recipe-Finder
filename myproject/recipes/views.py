@@ -5,11 +5,9 @@ from myproject import db
 from myproject.models import Recipes
 from myproject.recipes.forms import SearchRecipe,AddRecipeForm,UpdateRecipeForm,DelRecipeForm
 
-recipes_blueprint = Blueprint('recipes',
-                              __name__,
-                              template_folder='templates/recipes')
+recipes = Blueprint('recipes',__name__)
 
-@recipes_blueprint.route('/add', methods=['GET', 'POST'])
+@recipes.route('/add', methods=['GET', 'POST'])
 def add():
     form = AddRecipeForm()
 
@@ -25,13 +23,13 @@ def add():
 
     return render_template('add.html',form=form)
 
-@recipes_blueprint.route('/list')
+@recipes.route('/list')
 def list():
     # Grab a list of recipes from database.
     recipes = Recipes.query.all()
     return render_template('list.html', recipes=recipes)
 
-@recipes_blueprint.route('/delete', methods=['GET', 'POST'])
+@recipes.route('/delete', methods=['GET', 'POST'])
 def delete():
 
     form = DelRecipeForm()
@@ -46,7 +44,7 @@ def delete():
     return render_template('delete.html',form=form)
 
 
-@recipes_blueprint.route('/update', methods=['GET', 'POST'])
+@recipes.route('/update', methods=['GET', 'POST'])
 def update():
     form = UpdateRecipeForm()
 
