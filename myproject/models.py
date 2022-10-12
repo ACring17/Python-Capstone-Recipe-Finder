@@ -85,7 +85,7 @@ class Rating(db.Model):
         self.review = review
 
     def __repr__(self):
-        return f"Recipe:{self.recipe_id}, Ingredients:{self.ingredient_id}, Rating: {self.rating}, Review:{self.review}"
+        return f"Recipe:{self.recipe_id}, Rating: {self.rating}, Review:{self.review}"
 
 
 class Measurement(db.Model):
