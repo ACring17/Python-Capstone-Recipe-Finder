@@ -21,41 +21,47 @@ def create_recipe():
         db.session.commit()
         return redirect(url_for('core.index'))
 
-    return render_template('add.html',form=form) #Left off here, need to make sure template is created
+    return render_template('addrecipe.html',form=form) 
 
-@recipes.route('/list')
-def list():
+@recipes.route('/<int:recipes_id>')
+def recipes_list(recipes_id):
     # Grab a list of recipes from database.
-    recipes = Recipes.query.all()
-    return render_template('list.html', recipes=recipes)
+    recipes_list = Recipes.query.get_or_404(recipes_id)
+    return render_template('recipeslist.html', name=recipes_list.name, description=recipes_list.description, direction=recipes_list.direction)
 
-@recipes.route('/delete', methods=['GET', 'POST'])
-def delete():
+@recipes.route('/<int:recipe_id/delete', methods=['GET', 'POST'])
+@login_required
+def delete_recipe(recipe_id):
+    recipe = Recipes.query.get_or_404(recipe_id)
+    if rator.author != current_user:
+        abort(403)
 
-    form = DelRecipeForm()
-
-    if form.validate_on_submit():
-        id = form.id.data
-        recipe = Recipes.query.get(id)
-        db.session.delete(recipe)
-        db.session.commit()
-
-        return redirect(url_for('recipes.list'))
-    return render_template('delete.html',form=form)
+    db.session.delete(recipe)
+    db.session.commit()
+    return redirect(url_for('core.index'))
 
 
-@recipes.route('/update', methods=['GET', 'POST'])
-def update():
+@recipes.route('/<int:recipe_id>', methods=['GET', 'POST'])
+@login_required
+def update(recipe_id):
+    recipe = Recipes.query.get_or_404(recipe_id)
+
+    if recipe.rator != current_user:
+        abort(403)
+
     form = UpdateRecipeForm()
 
     if form.validate_on_submit():
-        name = form.name.data
-
-        # Update new Recipe to database
-        new_recipe = Recipes(name)
-        db.session.add(new_recipe)
+        recipe.name = form.name.data
+        recipe.description = form.description.data
+        recipe.directions = form.directions.data
         db.session.commit()
 
-        return redirect(url_for('recipes.list'))
+        return redirect(url_for('recipes.recipe', recipe_id=recipe.id))
 
-    return render_template('add.html',form=form)
+    elif request.method = 'GET':
+        form.name.data = recipe.name
+        form.description = recipe.description
+        form.directions = recipe.directions
+
+    return render_template('core.index',form=form)
