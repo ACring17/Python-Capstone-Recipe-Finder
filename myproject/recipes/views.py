@@ -33,7 +33,7 @@ def recipes_list(recipes_id):
 @login_required
 def delete_recipe(recipe_id):
     recipe = Recipes.query.get_or_404(recipe_id)
-    if rator.author != current_user:
+    if recipe.rater != current_user:
         abort(403)
 
     db.session.delete(recipe)
