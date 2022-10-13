@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <h1>{{recipe.name}}</h1>
+        <h2>Rated by: {{recipe.rater.name}}</h2>
+        <h3>{{recipe.rating}}</h3>
+        <p>{{recipe.review}}</p>
+    </div>
+
+{% endblock %}
