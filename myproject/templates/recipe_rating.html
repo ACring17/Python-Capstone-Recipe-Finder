@@ -10,7 +10,7 @@
     {% if recipe.author == current_user %}
     <div>
         <a href="{{url_for('recipes.update',recipe_id=recipes_id)}}">Update</a>
-        <button type="button" name="button">Delete</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del_modal">Delete</button>
     {% endif %}
     </div>
 
