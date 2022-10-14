@@ -112,3 +112,5 @@ class Measurement(db.Model):
 
     def __repr__(self):
         return f"Recipe:{self.recipe_id}, Ingredients:{self.ingredient_id}, Quantitity: {self.quantity}"
+
+db.create_all()

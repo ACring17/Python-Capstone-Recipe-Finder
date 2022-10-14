@@ -29,7 +29,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
 
-        user = Users.query.filter_by(email=form.email.data).first()
+        user = Users.query.filter_by(username=form.username.data).first()
 
         if user.check_password(form.password.data) and user is not None:
 
