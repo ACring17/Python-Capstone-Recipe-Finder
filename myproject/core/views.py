@@ -1,11 +1,13 @@
+from myproject.models import Rating
 from flask import render_template, request, Blueprint
 
 core = Blueprint('core', __name__)
 
 @core.route('/')
 def index():
-    #Will pass in data base list
-    return render_template('index.html')
+    page = request.args.get('page',1,type=int)
+    review=Rating.query.order_by(Rating.desc()).paginate(page=page,per_page=20)
+    return render_template('index.html',review=review)
 
 @core.route('/recipes')
 def recipes():

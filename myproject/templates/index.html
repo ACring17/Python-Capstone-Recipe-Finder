@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="jumbotron">
     <h1>Welcome to Recipe Finder</h1>
-   
+</div>
+<div class="container">
+
+    {% for rating in review.items %}
+    <div class="card">
+        <div class="caed-body">
+            <h2><a class="card-title" href="{{url_for('recipe.review',recipe.id=review.id)}}">{{rating.title}}</a>
+                <a href="{{url_for('users.user_rating',name=rating.rater.name)}}">Written By: {{review.rater.name}}</a>
+                <a class="btn btn-primary" href="{{url_for('recipe.review',recipe.id=review.id)}}"> Read Review</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
