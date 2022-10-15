@@ -8,9 +8,9 @@
     {% for rating in review.items %}
     <div class="card">
         <div class="caed-body">
-            <h2><a class="card-title" href="{{url_for('recipe.review',recipe.id=review.id)}}">{{rating.title}}</a>
+            <h2><a class="card-title" href="{{url_for('recipe.rating',rating.id,review.id)}}">{{rating.title}}</a>
                 <a href="{{url_for('users.user_rating',name=rating.rater.name)}}">Written By: {{review.rater.name}}</a>
-                <a class="btn btn-primary" href="{{url_for('recipe.review',recipe.id=review.id)}}"> Read Review</a>
+                <a class="btn btn-primary" href="{{url_for('recipe.review',recipe.id,review.id)}}"> Read Review</a>
         </div>
     </div>
     {% endfor %}
@@ -18,7 +18,7 @@
 
 <nav aria-label='Page Navigation example'>
     <ul class="pagination justify-content-center">
-      {% for page_num in recipe_posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2)  %}
+      {% for page_num in review.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2)  %}
         {% if recipe_posts.page == page_num %}
         <li class='page-item disabled'>
           <a class="page-link" href="{{url_for('core.index',page=page_num)}}">{{ page_num}}</a>

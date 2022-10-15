@@ -6,7 +6,7 @@ core = Blueprint('core', __name__)
 @core.route('/')
 def index():
     page = request.args.get('page',1,type=int)
-    review=Rating.query.order_by(Rating.desc()).paginate(page=page,per_page=20)
+    review=Rating.query.order_by(Rating.rating_id.desc()).paginate(page=page,per_page=20)
     return render_template('index.html',review=review)
 
 @core.route('/recipes')
