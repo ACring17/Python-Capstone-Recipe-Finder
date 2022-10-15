@@ -6,6 +6,7 @@ from myproject.recipes.forms import SearchRecipe,AddRecipeForm,UpdateRecipeForm,
 
 recipes = Blueprint('recipes',__name__)
 
+#Create method
 @recipes.route('/create', methods=['GET', 'POST'])
 @login_required
 def create_recipe():
@@ -23,12 +24,14 @@ def create_recipe():
 
     return render_template('new_recipe.html',form=form) 
 
+#View method
 @recipes.route('/<int:recipes_id>')
 def recipes_list(recipes_id):
     # Grab a list of recipes from database.
     recipes_list = Recipes.query.get_or_404(recipes_id)
     return render_template('recipeslist.html', name=recipes_list.name, description=recipes_list.description, direction=recipes_list.direction)
 
+#Delete Method
 @recipes.route('/<int:recipe_id>/delete', methods=['POST'])
 @login_required
 def delete_recipe(recipe_id):
@@ -40,7 +43,7 @@ def delete_recipe(recipe_id):
     db.session.commit()
     return redirect(url_for('core.index'))
 
-
+#Update method
 @recipes.route('/<int:recipe_id>/update', methods=['GET', 'POST'])
 @login_required
 def update(recipe_id):
