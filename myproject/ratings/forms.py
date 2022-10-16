@@ -27,13 +27,13 @@ class UpdateRatingForm(FlaskForm):
     submit = submit = SubmitField('Update')
 
 
-class DelRatingForm(FlaskForm):
+# class DelRatingForm(FlaskForm):
 
-    name = StringField('username',validators=[DataRequired()])
-    submit = SubmitField('Remove Recipe')
+#     user_id = StringField('',validators=[DataRequired()])
+#     submit = SubmitField('Remove Rating')
 
-    def check_recipe(self,field):
-        if Rating.query.filter_by(name=field.data).first():
-            raise ValidationError('Your recipe has been removed!')
+#     def check_recipe(self,field):
+#         if Rating.query.filter_by(name=field.data).first():
+#             raise ValidationError('Your rating has been removed!')
 
 #This maybe just a button instead
