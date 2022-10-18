@@ -1,7 +1,7 @@
 from myproject import db
 from myproject.core.forms import SearchForm
 from myproject.models import Rating,Recipes,Ingredient
-from flask import render_template, request, Blueprint,redirect 
+from flask import render_template, request, Blueprint,redirect, flash 
 
 core = Blueprint('core', __name__)
 
