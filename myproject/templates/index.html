@@ -3,6 +3,27 @@
 <div class="jumbotron">
     <h1>Welcome to Recipe Finder</h1>
 </div>
+
+{% comment %} Error message 
+<div class="container">
+{% if search = error %}
+
+{% endif %}
+</div>
+{% endcomment %}
+
+<div class="container">
+  <form method="post">
+    {{form.hidden_tag()}}
+    <dl>
+    {{form.select.label}}{{form.select}}<br>
+    {{form.search.label}}{{form.search}}<br>
+    {{form.submit()}}
+
+    </dl>
+  </form>
+</div>
+
 <div class="container">
 
     {% for rating in review.items %}
