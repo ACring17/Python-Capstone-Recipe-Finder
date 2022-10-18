@@ -1,13 +1,35 @@
-from myproject.models import Rating
-from flask import render_template, request, Blueprint
+from myproject import db
+from myproject.core.forms import SearchForm
+from myproject.models import Rating,Recipes,Ingredient
+from flask import render_template, request, Blueprint,redirect 
 
 core = Blueprint('core', __name__)
 
-@core.route('/')
+@core.route('/', methods=['GET','POST'])
 def index():
     page = request.args.get('page',1,type=int)
     review=Rating.query.order_by(Rating.rating_id.desc()).paginate(page=page,per_page=20)
-    return render_template('index.html',review=review)
+   
+    #Adding search bar
+    search =  SearchForm(request.form)
+    if request.method == 'POST':
+        return search_results(search)
+    return render_template('index.html',review=review, form=search)
+
+@core.route('/results')
+def search_results(search):
+    results = []
+    search_string = search.data['search']
+    if search.data['search'] == '':
+        qry = db.session.query(Recipes)
+        results = qry.all()
+    if not results:
+        flash('No results found!')
+        return redirect('/')
+    else:
+        # display results
+        return render_template('results.html', results=results)
+
 
 @core.route('/recipes')
 def recipes():
