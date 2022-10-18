@@ -10,3 +10,4 @@ class SearchForm(FlaskForm):
                ('Ingredient', 'Ingredient')]
     select = SelectField('Search for recipe by:', choices=choices)
     search = StringField('')
+    submit = SubmitField('Search') 

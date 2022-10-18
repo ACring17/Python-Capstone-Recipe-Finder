@@ -2,7 +2,7 @@ from flask import Blueprint,render_template,redirect,url_for,request,redirect
 from flask_login import current_user,login_required
 from myproject import db
 from myproject.models import Recipes
-from myproject.recipes.forms import SearchRecipe,AddRecipeForm,UpdateRecipeForm,DelRecipeForm
+from myproject.recipes.forms import AddRecipeForm,UpdateRecipeForm
 
 recipes = Blueprint('recipes',__name__)
 
