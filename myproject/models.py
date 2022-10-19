@@ -114,3 +114,16 @@ class Measurement(db.Model):
         return f"Recipe:{self.recipe_id}, Ingredients:{self.ingredient_id}, Quantitity: {self.quantity}"
 
 db.create_all()
+
+import json
+
+new_recipe = Recipes(
+    name=json.loads(open('./static/seed.json').read(([1]['name']))),
+    direction=json.loads(open('./static/seed.json').read('\n'.join([1]['steps']))),#'\n'.join(direction[1]['steps'])  This is how to get steps in terminal
+)
+try:
+    db.session.add(new_recipe)
+    db.session.commit()
+    print('Insert successful')
+except:
+    print('Insert failed')
