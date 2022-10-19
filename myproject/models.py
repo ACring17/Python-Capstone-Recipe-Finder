@@ -131,7 +131,7 @@ except:
 
 
 new_ingredient = Ingredient(
-    name=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients']['name'])))
+    name=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['name'])))
 )
 try:
     db.session.add(new_ingredient)
@@ -140,8 +140,9 @@ try:
 except:
     print('Insert failed')
 
+
 new_measurement = Measurement(
-    quantity=json.loads(open('./static/seed.json').read('\n'.join([1][0]['"quantity"'])))
+    quantity=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['"quantity"'])))
 )
 try:
     db.session.add(new_measurement)
