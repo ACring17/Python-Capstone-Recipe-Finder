@@ -119,7 +119,7 @@ db.create_all()
 import json
 
 new_recipe = Recipes(
-    name=json.loads(open('./static/seed.json').read(([1]['name']))),
+    name=json.loads(open('./static/seed.json').read((''.join[1]['name']))),
     direction=json.loads(open('./static/seed.json').read('\n'.join([1]['steps']))),#'\n'.join(direction[1]['steps'])  This is how to get steps in terminal
 )
 try:
@@ -129,6 +129,23 @@ try:
 except:
     print('Insert failed')
 
+
 new_ingredient = Ingredient(
     name=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients']['name'])))
 )
+try:
+    db.session.add(new_ingredient)
+    db.session.commit()
+    print('Insert successful')
+except:
+    print('Insert failed')
+
+new_measurement = Measurement(
+    quantity=json.loads(open('./static/seed.json').read('\n'.join([1][0]['"quantity"'])))
+)
+try:
+    db.session.add(new_measurement)
+    db.session.commit()
+    print('Insert successful')
+except:
+    print('Insert failed')
