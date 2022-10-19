@@ -115,6 +115,7 @@ class Measurement(db.Model):
 
 db.create_all()
 
+#Seeding script
 import json
 
 new_recipe = Recipes(
@@ -127,3 +128,7 @@ try:
     print('Insert successful')
 except:
     print('Insert failed')
+
+new_ingredient = Ingredient(
+    name=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients']['name'])))
+)
