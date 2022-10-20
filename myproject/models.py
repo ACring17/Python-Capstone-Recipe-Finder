@@ -131,7 +131,7 @@ except:
 
 
 new_ingredient = Ingredient(
-    name=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['name'])))
+    name=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['name'])))#Need all ingredients
 )
 try:
     db.session.add(new_ingredient)
@@ -142,7 +142,7 @@ except:
 
 
 new_measurement = Measurement(
-    quantity=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['"quantity"'])))
+    quantity=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['"quantity"'])))#Need all ingredient measurements
 )
 try:
     db.session.add(new_measurement)
@@ -150,3 +150,6 @@ try:
     print('Insert successful')
 except:
     print('Insert failed')
+
+    #Thinking for loop to iterate through the dictionary
+    
