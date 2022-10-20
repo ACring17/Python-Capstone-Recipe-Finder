@@ -5,11 +5,6 @@ from wtforms import ValidationError
 
 from myproject.models import Recipes
 
-class SearchRecipe(FlaskForm):
-    title = StringField('What recipe are you looking for?')
-    search = SubmitField('Search')
-    # Complete the search form
-
 class AddRecipeForm (FlaskForm):
 
     name = StringField('Name of your recipe?',validators=[DataRequired()])
@@ -30,14 +25,3 @@ class UpdateRecipeForm(FlaskForm):
     def check_recipe(self,field):
         if Recipes.query.filter_by(name=field.data).first():
             raise ValidationError('Your recipe has been registered already!')
-
-
-# class DelRecipeForm(FlaskForm):
-
-#     name = StringField('username',validators=[DataRequired()])
-#     submit = SubmitField('Remove Recipe')
-
-#     def check_recipe(self,field):
-#         if Recipes.query.filter_by(name=field.data).first():
-#             raise ValidationError('Your recipe has been removed!')
-
