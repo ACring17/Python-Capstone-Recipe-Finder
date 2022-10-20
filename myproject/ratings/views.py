@@ -1,44 +1,67 @@
-from flask import Blueprint,render_template,redirect,url_for
+from flask import Blueprint,render_template,redirect,url_for,request,redirect
+from flask_login import current_user,login_required
 from myproject import db
-from myproject.ratings.forms import AddForm,DelForm
-from myproject.models import Ingredient
+from myproject.models import Rating
+from myproject.ratings.forms import AddRatingForm,UpdateRatingForm
 
-ingredients_blueprint = Blueprint('ingredients',
-                              __name__,
-                              template_folder='templates/ingredients')
+ratings = Blueprint('ratings',__name__,)
 
-@ingredients_blueprint.route('/add', methods=['GET', 'POST'])
-def add():
-    form = AddForm()
+#Create method
+@ratings.route('/add', methods=['GET', 'POST'])
+@login_required
+def create_rating():
+    form = AddRatingForm()
 
     if form.validate_on_submit():
-        name = form.name.data
+        rating = Rating(rating=form.rating.data,
+                        review=form.review.data,
+                        user_id=current_user.id)
 
         # Add new Recipe to database
-        new_ingredient = Ingredient(name)
-        db.session.add(new_ingredient)
+        db.session.add(rating)
         db.session.commit()
+        return redirect(url_for('core.index'))
 
-        return redirect(url_for('ingredients.list'))
+    return render_template('ratings.html',form=form) 
 
-    return render_template('add.html',form=form)
+#View method
+@ratings.route('/<int:rating_id>')
+def ratings_list():
+    # Grab a list of ratings on recipes
+    ratings_list = Rating.query.get_or_404(rating_id)
+    return render_template('ratings.html', rating=ratings_list.rating,review=ratings_list.review)
 
-@ingredients_blueprint.route('/list')
-def list():
-    # Grab a list of ingredients from database.
-    ingredients = Ingredient.query.all()
-    return render_template('list.html', ingredients=ingredients)
+@ratings.route('/<int:recipe_id>/delete', methods=['POST'])
+@login_required
+def delete_rating(rating_id):
+    rating = Rating.query.get_or_404(rating_id)
+    if rating.rater != current_user:
+        abort(403)
 
-@ingredients_blueprint.route('/delete', methods=['GET', 'POST'])
-def delete():
+    db.session.delete(rating)
+    db.session.commit()
+    return redirect(url_for('core.index'))
 
-    form = DelForm()
+#Update method
+@ratings.route('/<int:rating_id>/update', methods=['GET', 'POST'])
+@login_required
+def update(rating_id):
+    rating = Rating.query.get_or_404(rating_id)
+
+    if rating.rator != current_user:
+        abort(403)
+
+    form = UpdateRatingForm()
 
     if form.validate_on_submit():
-        id = form.id.data
-        ingredient = Ingredient.query.get(id)
-        db.session.delete(ingredient)
+        rating.rating = form.rating.data
+        rating.review = form.review.data
         db.session.commit()
 
-        return redirect(url_for('ingredients.list'))
-    return render_template('delete.html',form=form)
+        return redirect(url_for('ratings.rating', rating_id=rating.id))
+
+    elif request.method == 'GET':
+        form.rating = rating.rating
+        form.review = rating.review
+
+    return render_template('core.index',form=form)
