@@ -41,16 +41,15 @@ class Recipes(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.Text)
     direction = db.Column(db.Text)
-    description = db.Column(db.Text)
+    
 
 
     def __init__(self,name,direction,description):
         self.name = name
-        self.description = description
         self.direction = direction
 
     def __repr__(self):
-        return f"Recipe name: {self.name}, Description: {self.description}, Directions: {self.direction}"
+        return f"Recipe name: {self.name}, Directions: {self.direction}"
 
 
 class Ingredient(db.Model):
@@ -116,40 +115,53 @@ class Measurement(db.Model):
 db.create_all()
 
 #Seeding script
-import json
+# import json
 
-new_recipe = Recipes(
-    name=json.loads(open('./static/seed.json').read((''.join[1]['name']))),
-    direction=json.loads(open('./static/seed.json').read('\n'.join([1]['steps']))),#'\n'.join(direction[1]['steps'])  This is how to get steps in terminal
-)
-try:
-    db.session.add(new_recipe)
-    db.session.commit()
-    print('Insert successful')
-except:
-    print('Insert failed')
+# seed_recipe = Recipes(
+#     name=json.loads(open('seed.json').read((''.join[1]['name']))),
+#     direction=json.loads(open('seed.json').read('\n'.join([1]['steps']))),#'\n'.join(direction[1]['steps'])  This is how to get steps in terminal
+# )
 
+# #Attempt at looping through the script
+# for name in seed_recipe:
+#     return ''.join[0:]['name']
 
-new_ingredient = Ingredient(
-    name=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['name'])))#Need all ingredients
-)
-try:
-    db.session.add(new_ingredient)
-    db.session.commit()
-    print('Insert successful')
-except:
-    print('Insert failed')
+# try:
+#     db.session.add(seed_recipe)
+#     db.session.commit()
+#     print('Insert successful')
+# except:
+#     print('Insert failed')
 
 
-new_measurement = Measurement(
-    quantity=json.loads(open('./static/seed.json').read('\n'.join([1]['ingredients'][0]['"quantity"'])))#Need all ingredient measurements
-)
-try:
-    db.session.add(new_measurement)
-    db.session.commit()
-    print('Insert successful')
-except:
-    print('Insert failed')
+# seed_ingredient = Ingredient(
+#     name=json.loads(open('seed.json').read('\n'.join([1]['ingredients'][0]['name'])))#Need all ingredients
+# )
 
-    #Thinking for loop to iterate through the dictionary
-    
+# #Attempt at looping through the script
+# for name in seed_ingredient:
+#     return ''.join[0:]['ingredients'][0:]['name']
+
+# try:
+#     db.session.add(seed_ingredient)
+#     db.session.commit()
+#     print('Insert successful')
+# except:
+#     print('Insert failed')
+
+
+# seed_measurement = Measurement(
+#     quantity=json.loads(open('seed.json').read('\n'.join([1]['ingredients'][0]['"quantity"'])))#Need all ingredient measurements
+# )
+
+# #Attempt at looping through the script
+# for measurment in seed_measurement:
+#     return ''.join[0:]['ingredients'][0:]['quantity']
+
+
+# try:
+#     db.session.add(seed_measurement)
+#     db.session.commit()
+#     print('Insert successful')
+# except:
+#     print('Insert failed')
