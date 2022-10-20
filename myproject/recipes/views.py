@@ -1,8 +1,11 @@
+import json
 from flask import Blueprint,render_template,redirect,url_for,request,redirect
 from flask_login import current_user,login_required
 from myproject import db
 from myproject.models import Recipes
 from myproject.recipes.forms import AddRecipeForm,UpdateRecipeForm
+from myproject.static import seed
+
 
 recipes = Blueprint('recipes',__name__)
 
