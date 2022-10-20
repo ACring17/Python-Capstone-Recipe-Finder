@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from myproject import db
+from werkzeug.security import generate_password_hash,check_password_hash
 from myproject.models import Users, Recipes, Ingredient, Rating, Measurement
 from myproject.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 
