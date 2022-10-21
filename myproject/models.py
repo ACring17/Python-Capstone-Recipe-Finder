@@ -117,6 +117,19 @@ db.create_all()
 #Seeding script
 # import json
 
+#@recie.route('/', methods=['GET'])
+#def seed():
+    #if request.method == 'GET':
+        #file = request.seed['seed']   
+
+        #seed = Recipes(name=seed.name, direction=seed.direction)
+        #db.session.add(seed)
+        #db.session.commit()
+
+    #return render_template(index.html)
+
+
+
 # seed_recipe = Recipes(
 #     name=json.loads(open('seed.json').read((''.join[1]['name']))),
 #     direction=json.loads(open('seed.json').read('\n'.join([1]['steps']))),#'\n'.join(direction[1]['steps'])  This is how to get steps in terminal
