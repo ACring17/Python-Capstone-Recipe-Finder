@@ -117,6 +117,8 @@ db.create_all()
 #Seeding script
 # import json
 
+
+#***** FEELING GOOD ABOUT THIS METHOD   ****************
 #@recie.route('/', methods=['GET'])
 #def seed():
     #if request.method == 'GET':
@@ -129,7 +131,7 @@ db.create_all()
     #return render_template(index.html)
 
 
-
+#****** HELP ME VISUALIZE HOW TO HIT THE INFORMATION IN THE JSON FILE   *****************
 # seed_recipe = Recipes(
 #     name=json.loads(open('seed.json').read((''.join[1]['name']))),
 #     direction=json.loads(open('seed.json').read('\n'.join([1]['steps']))),#'\n'.join(direction[1]['steps'])  This is how to get steps in terminal
