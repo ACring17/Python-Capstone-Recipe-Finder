@@ -4,7 +4,7 @@ from flask_login import current_user,login_required
 from myproject import db
 from myproject.models import Recipes
 from myproject.recipes.forms import AddRecipeForm,UpdateRecipeForm
-from myproject.static import seed
+#from myproject.static import seed
 
 
 recipes = Blueprint('recipes',__name__)
