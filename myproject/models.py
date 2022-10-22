@@ -20,8 +20,8 @@ class Users(db.Model,UserMixin):
 
     def __init__(self,username,password,name):
         self.username = username
-        self.password_hash = generate_password_hash(password)
         self.name = name
+        self.password_hash = generate_password_hash(password)
 
     def check_password(self,password):
         return check_password_hash(self.password_hash,password)
@@ -48,6 +48,10 @@ class Recipes(db.Model):
         self.name = name
         self.direction = direction
 
+    def save_to_db(self):
+            db.session.add(self)
+            db.session.commit()
+
     def __repr__(self):
         return f"Recipe name: {self.name}, Directions: {self.direction}"
 
@@ -61,6 +65,10 @@ class Ingredient(db.Model):
 
     def __init__(self,name):
         self.name = name
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
 
     def __repr__(self):
         return f"Indredients you have: {self.name}"
@@ -87,6 +95,10 @@ class Rating(db.Model):
         self.rating = rating
         self.review = review
 
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
     def __repr__(self):
         return f"Recipe:{self.recipe_id}, Rating: {self.rating}, Review:{self.review}"
 
@@ -109,6 +121,10 @@ class Measurement(db.Model):
         self.measurement_id = measurement_id
         self.quantity = quantity
 
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+        
     def __repr__(self):
         return f"Recipe:{self.recipe_id}, Ingredients:{self.ingredient_id}, Quantitity: {self.quantity}"
 
