@@ -31,7 +31,7 @@ def login():
     if form.validate_on_submit():
 
         user = Users.query.filter_by(username=form.username.data).first()
-
+        #I think the bug is in this logic
         if user.check_password(form.password.data) and user is not None:
 
             login_user(user)

@@ -17,15 +17,15 @@
     <nav>
         <ul class='nav'>
         <li class='nav-link'><a href="{{url_for('core.index')}}">Home</a></li>
-        {% if current_user.is_authernticated %}
+      
         <li class='nav-link'><a href="{{url_for('users.logout')}}">Log out</a></li>
         <li class='nav-link'><a href="{{url_for('users.profile')}}">Profile</a></li>
-        <li class='nav-link'><a href="{{url_for('recipes.add')}}">Add a Recipe</a></li>
-        <li class='nav-link'><a href="{{url_for('ratings.add')}}">Add a Review</a></li>
-        {% else %}
+        <li class='nav-link'><a href="{{url_for('recipes.create_recipe')}}">Add a Recipe</a></li>
+        <li class='nav-link'><a href="{{url_for('ratings.create_rating')}}">Add a Review</a></li>
+        
         <li class='nav-link'><a href="{{url_for('users.login')}}">Log in</a></li>
         <li class='nav-link'><a href="{{url_for('users.register')}}">Register</a></li>
-        {% endif %}
+        
         </ul>
     </nav>
 <div class="container">
