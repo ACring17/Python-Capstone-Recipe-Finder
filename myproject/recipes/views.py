@@ -1,5 +1,5 @@
 import json
-from flask import Blueprint,render_template,redirect,url_for,request,redirect
+from flask import Blueprint,render_template,redirect,url_for,request,redirect,abort
 from flask_login import current_user,login_required
 from myproject import db
 from myproject.models import Recipes
@@ -17,7 +17,7 @@ def create_recipe():
 
     if form.validate_on_submit():
         recipe = Recipes(name=form.name.data,
-                        direction=form.direction.data,
+                        directions=form.directions.data,
                         user_id=current_user.id)
 
         # Add new Recipe to database
@@ -32,7 +32,7 @@ def create_recipe():
 def recipes_list(recipes_id):
     # Grab a list of recipes from database.
     recipes_list = Recipes.query.get_or_404(recipes_id)
-    return render_template('recipeslist.html', name=recipes_list.name, description=recipes_list.description, direction=recipes_list.direction)
+    return render_template('recipeslist.html', name=recipes_list.name, description=recipes_list.description, directions=recipes_list.direction)
 
 #Delete Method
 @recipes.route('/<int:recipe_id>/delete', methods=['POST'])
