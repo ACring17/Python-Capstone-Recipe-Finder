@@ -26,7 +26,7 @@ def create_rating():
 
 #View method
 @ratings.route('/<int:rating_id>')
-def ratings_list():
+def ratings_list(rating_id):
     # Grab a list of ratings on recipes
     ratings_list = Rating.query.get_or_404(rating_id)
     return render_template('ratings.html', rating=ratings_list.rating,review=ratings_list.review)
