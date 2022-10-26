@@ -61,7 +61,8 @@ def update(rating_id):
         return redirect(url_for('ratings.rating', rating_id=rating.id))
 
     elif request.method == 'GET':
-        form.rating = rating.rating
-        form.review = rating.review
+        form.rating.data = rating.rating
+        form.review.data = rating.review
 
     return render_template('core.index',form=form)
+    # may need to change the template from index...

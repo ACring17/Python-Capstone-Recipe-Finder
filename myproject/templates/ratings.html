@@ -4,7 +4,7 @@
 <h1>Welcome to the page for {{current_user.username}}</h1>
 </div>   
 
-{% for post in recipe_post.items %}
+{% for post in ratings.items %}
 <h2><a href="{{url_for('recipe_post.recipe_post',recipe_post_id=post.id)}}"></a></h2> 
    Written By: <a href="{{url_for('users.user_post',username=post.author.username)}}">{{post.author.username}}</a>
 <br>
