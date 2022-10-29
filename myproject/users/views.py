@@ -57,6 +57,7 @@ def logout():
 def profile():
 
     form = UpdateUserForm()
+    print(form)
     if form.validate_on_submit():
         
         current_user.username = form.username.data
