@@ -7,9 +7,12 @@
 </div>
 
 <div class="container">
-    <form method="POST" action="">
+    <form method="POST">
+
         {{form.hidden_tag()}}
+
         {{form.username.label}}{{form.username}}
+
         {{form.submit()}}
     </form>
 </div>
