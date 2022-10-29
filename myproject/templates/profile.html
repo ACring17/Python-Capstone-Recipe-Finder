@@ -11,10 +11,15 @@
 
         {{form.hidden_tag()}}
 
-        {{form.username.label}}{{form.username}}
+        <div class="form-group">
+            {{form.username.label(class='form-group')}}
+            {{form.username(class='form-control')}}
+        </div>
 
-        {{form.submit()}}
+        <div class="form-group">
+            {{form.submit(class="btn btn-primary")}}
+        </div>
     </form>
 </div>
    
-{% endblock %}
+{% endblock content %}
