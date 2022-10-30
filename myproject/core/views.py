@@ -1,6 +1,6 @@
 from myproject import db
 from myproject.core.forms import SearchForm
-from myproject.models import Rating,Recipes,Ingredient
+from myproject.models import Rating,Recipes,Ingredient,Users
 from flask import render_template, request, Blueprint,redirect, flash 
 
 core = Blueprint('core', __name__)
@@ -38,7 +38,3 @@ def recipes():
 @core.route('/ingredient')
 def ingredient():
     return render_template('ingredient.html')
-
-@core.route('/profile')
-def profile():
-    return render_template('profile.html')
