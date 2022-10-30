@@ -61,11 +61,13 @@ def profile():
     if form.validate_on_submit():
         
         current_user.username = form.username.data
+        current_user.name = form.name.data
         db.session.commit()
         return redirect(url_for('users.profile'))
     
     elif request.method == "GET":
         form.username.data = current_user.username
+        form.name.data = current_user.name
         
     return render_template('profile.html',form=form)
 

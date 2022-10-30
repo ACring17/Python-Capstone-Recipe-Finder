@@ -26,6 +26,7 @@ class RegistrationForm(FlaskForm):
 class UpdateUserForm(FlaskForm):
 
     username = StringField('username',validators=[DataRequired()])
+    name = StringField('Name')
     submit = SubmitField('Update')
 
     def check_username(self,field):
