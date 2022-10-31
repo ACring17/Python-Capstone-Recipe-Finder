@@ -22,7 +22,7 @@ def create_rating():
         db.session.commit()
         return redirect(url_for('core.index'))
 
-    return render_template('ratings.html',form=form) 
+    return render_template('create_rating.html',form=form) 
 
 #View method
 @ratings.route('/<int:rating_id>')
