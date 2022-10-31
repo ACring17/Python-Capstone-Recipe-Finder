@@ -32,7 +32,7 @@ def create_recipe():
 def recipes_list(recipes_id):
     # Grab a list of recipes from database.
     recipes_list = Recipes.query.get_or_404(recipes_id)
-    return render_template('recipeslist.html', name=recipes_list.name, description=recipes_list.description, directions=recipes_list.direction)
+    return render_template('recipe_rating.html', name=recipes_list.name, description=recipes_list.description, directions=recipes_list.direction)
 
 #Delete Method
 @recipes.route('/<int:recipe_id>/delete', methods=['POST'])
