@@ -10,7 +10,7 @@ class AddRecipeForm (FlaskForm):
     name = StringField('Name of your recipe?',validators=[DataRequired()])
     description = TextAreaField('Describe this dish.') 
     directions = TextAreaField('What are the Directions?',validators=[DataRequired()])
-    submit = SubmitField('Update')
+    submit = SubmitField('Add Recipe')
     
     def check_recipe(self,field):
         if Recipes.query.filter_by(name=field.data).first():
