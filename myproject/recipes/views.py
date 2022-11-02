@@ -81,10 +81,15 @@ for recipe in data['recipes']:
     del recipe['timers'] 
     del recipe['imageURL'] 
     del recipe['originalURL']
+    name = recipe['name']
+    ingredients = recipe['ingredients']
+    directions = recipe['steps']
 
 with open('new_recipes.json', 'w') as f:
     json.dump(data, f, indent=2)
     print(recipe['name'], recipe['ingredients'])
+
+
 
 # String JSON practice
 # data = json.loads(recipe_data)
