@@ -71,3 +71,28 @@ def update(recipe_id):
         form.directions = recipe.directions
 
     return render_template('core.index',form=form)
+
+# May need to move this to the top of the file so it loads first
+
+with open('seed.json') as f:
+    data = json.load(f)
+
+for recipe in data['recipes']:
+    del recipe['timers'] 
+    del recipe['imageURL'] 
+    del recipe['originalURL']
+
+with open('new_recipes.json', 'w') as f:
+    json.dump(data, f, indent=2)
+    print(recipe['name'], recipe['ingredients'])
+
+# String JSON practice
+# data = json.loads(recipe_data)
+
+# for recipe in data:
+#     print(['name'])
+#     del ['timers', 'imageURL', 'originalURL']
+
+# new_data = json.dumps(data, indent=2)
+
+# print(new_data)
