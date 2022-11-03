@@ -78,9 +78,9 @@ with open('seed.json') as f:
     data = json.load(f)
 
 for recipe in data['recipes']:
-    del recipe['timers'] 
-    del recipe['imageURL'] 
-    del recipe['originalURL']
+    del recipe[0:8]['timers'] 
+    del recipe[0:8]['imageURL'] 
+    del recipe[0:8]['originalURL']
     name = recipe[0:8]['name']
     ingredients = recipe[0:8]['ingredients']
     directions = recipe[0:8]['steps']
