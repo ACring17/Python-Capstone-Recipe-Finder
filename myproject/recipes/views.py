@@ -4,7 +4,7 @@ from flask_login import current_user,login_required
 from myproject import db
 from myproject.models import Recipes
 from myproject.recipes.forms import AddRecipeForm,UpdateRecipeForm
-#from myproject.static import seed
+
 
 
 recipes = Blueprint('recipes',__name__)
@@ -74,16 +74,16 @@ def update(recipe_id):
 
 # May need to move this to the top of the file so it loads first
 
-with open('seed.json') as f:
+with open('myproject/recipes/seed.json') as f:
     data = json.load(f)
 
 for recipe in data['recipes']:
-    del recipe[0:8]['timers'] 
-    del recipe[0:8]['imageURL'] 
-    del recipe[0:8]['originalURL']
-    name = recipe[0:8]['name']
-    ingredients = recipe[0:8]['ingredients']
-    directions = recipe[0:8]['steps']
+    del recipe['timers'] 
+    del recipe['imageURL'] 
+    del recipe['originalURL']
+    name = recipe['name']
+    ingredients = recipe['ingredients']
+    directions = recipe['steps']
 
 with open('new_recipes.json', 'w') as f:
     json.dump(data, f, indent=2)
