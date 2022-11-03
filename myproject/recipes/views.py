@@ -81,9 +81,9 @@ for recipe in data['recipes']:
     del recipe['timers'] 
     del recipe['imageURL'] 
     del recipe['originalURL']
-    name = recipe['name']
-    ingredients = recipe['ingredients']
-    directions = recipe['steps']
+    name = recipe[0:8]['name']
+    ingredients = recipe[0:8]['ingredients']
+    directions = recipe[0:8]['steps']
 
 with open('new_recipes.json', 'w') as f:
     json.dump(data, f, indent=2)
