@@ -80,7 +80,7 @@ with open('myproject/recipes/seed.json') as f:
 for recipe in data['recipes']:
     del recipe['timers'] 
     del recipe['imageURL'] 
-    del recipe['originalURL']
+    # del recipe['originalURL'] does not seem needed
     name = recipe['name']
     ingredients = recipe['ingredients']
     directions = recipe['steps']
