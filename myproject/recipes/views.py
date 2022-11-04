@@ -4,6 +4,7 @@ from flask_login import current_user,login_required
 from myproject import db
 from myproject.models import Recipes
 from myproject.recipes.forms import AddRecipeForm,UpdateRecipeForm
+from sqlalchemy.orm import joinedload
 
 
 
@@ -72,37 +73,25 @@ def update(recipe_id):
 
     return render_template('core.index',form=form)
 
-# May need to move this to the top of the file so it loads first
+# Search query
+@recipes.route('/<int:recipes_id>/search')
+def search(recipe):
+    data = json.load('myproject/recipes/seed.json')
+    for recipe in data['recipes']:
+        name = recipe['name']
+        directions = recipe['steps']
 
-with open('myproject/recipes/new_recipes.json') as f:
-    data = json.load(f)
-
-for recipe in data['recipes']:
-    name = recipe['name']
-    ingredients = recipe['ingredients']
-    directions = recipe['steps']
-
-    new_recipes = Recipes(name,directions)
-    db.session.add(new_recipes)
-    db.session.commit()
+        new_recipes = Recipes(name,directions)
+        db.session.add(new_recipes)
+        db.session.commit()
+        
+        query = Recipes.query.options(joinedload('new_recipes'))
+        for recipe in query:
+            return Recipes.query.with_parent(new_recipes).filter('').all()
     
-#Think of what will add to db recipes
-json.dump(data, indent=2)
-
-#   ####  Created the new JSON file with this ####  #
-# with open('new_recipes.json', 'w') as f:
-#     json.dump(data, f, indent=2)
-#     print(recipe['name'], recipe['ingredients'])
-
-
-
-# String JSON practice
-# data = json.loads(recipe_data)
-
-# for recipe in data:
-#     print(['name'])
-#     del ['timers', 'imageURL', 'originalURL']
-
-# new_data = json.dumps(data, indent=2)
-
-# print(new_data)
+    
+        
+        
+        
+        
+        

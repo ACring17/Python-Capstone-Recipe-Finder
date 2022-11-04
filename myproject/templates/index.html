@@ -18,6 +18,19 @@
 
 <div class="container">
 
+  {% for search in search.items %}
+  <div class="card">
+      <div class="caed-body">
+          <h2><a class="card-title" href="{{url_for('recipe.name',recipe.id,recipe.direction)}}">{{recipe.name}}</a>
+              <p>{{recipe.direction}}</p>
+              <a class="btn btn-primary" href="{{url_for('recipe.review',recipe.id,review.id)}}"> Read Review</a>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="container">
+
     {% for rating in review.items %}
     <div class="card">
         <div class="caed-body">
