@@ -78,12 +78,13 @@ with open('myproject/recipes/new_recipes.json') as f:
     data = json.load(f)
 
 for recipe in data['recipes']:
-    del recipe['timers'] 
-    del recipe['imageURL'] 
-    # del recipe['originalURL'] does not seem needed
     name = recipe['name']
     ingredients = recipe['ingredients']
     directions = recipe['steps']
+
+    new_recipes = Recipes(name,directions)
+    db.session.add(new_recipes)
+    db.session.commit()
     
 #Think of what will add to db recipes
 json.dump(data, indent=2)
