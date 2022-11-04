@@ -74,7 +74,7 @@ def update(recipe_id):
 
 # May need to move this to the top of the file so it loads first
 
-with open('myproject/recipes/seed.json') as f:
+with open('myproject/recipes/new_recipes.json') as f:
     data = json.load(f)
 
 for recipe in data['recipes']:
@@ -84,10 +84,14 @@ for recipe in data['recipes']:
     name = recipe['name']
     ingredients = recipe['ingredients']
     directions = recipe['steps']
+    
+#Think of what will add to db recipes
+json.dump(data, indent=2)
 
-with open('new_recipes.json', 'w') as f:
-    json.dump(data, f, indent=2)
-    print(recipe['name'], recipe['ingredients'])
+#   ####  Created the new JSON file with this ####  #
+# with open('new_recipes.json', 'w') as f:
+#     json.dump(data, f, indent=2)
+#     print(recipe['name'], recipe['ingredients'])
 
 
 
