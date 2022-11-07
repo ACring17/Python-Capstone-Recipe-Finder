@@ -74,20 +74,19 @@ def update(recipe_id):
     return render_template('core.index',form=form)
 
 # Search query
-@recipes.route('/<int:recipes_id>/search')
+@recipes.route('/search')
 def search(recipe):
-    data = json.load('myproject/recipes/seed.json')
-    for recipe in data['recipes']:
-        name = recipe['name']
-        directions = recipe['steps']
+    Recipes.query.all()
+    Recipes.query.filter_by(name="").first()
+    for recipe in Recipes:
 
-        new_recipes = Recipes(name,directions)
-        db.session.add(new_recipes)
-        db.session.commit()
-        
-        query = Recipes.query.options(joinedload('new_recipes'))
+    #Loop through every recipe name
+    #Recipe.query.all()
+    #Loop through db and add to list of results
+    #Might not need this code down below
+        query = Recipes.query.options(joinedload(''))
         for recipe in query:
-            return Recipes.query.with_parent(new_recipes).filter('').all()
+            return Recipes.query.with_parent(new_recipes.name).filter('').all()
     
     
         
