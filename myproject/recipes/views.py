@@ -77,9 +77,10 @@ def update(recipe_id):
 @recipes.route('/search')
 def search(recipe):
     Recipes.query.all()
-    Recipes.query.filter_by(name="").all()
-    for name in Recipes:
-        if name = query
+    all_recipes = Recipes.query.all()
+    for recipe in all_recipes:
+        #Think of how to get the results to render on home page
+        return render_template()
 
     #Loop through every recipe name
     #Recipe.query.all()
