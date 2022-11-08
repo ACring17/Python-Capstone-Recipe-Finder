@@ -28,7 +28,7 @@ def search_results(search):
         return redirect('/')
     else:
         # display results
-        return render_template('results.html', results=results)
+        return render_template('index.html', results=results)
 
 
 @core.route('/recipes')
