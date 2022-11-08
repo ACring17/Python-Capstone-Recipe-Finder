@@ -77,8 +77,9 @@ def update(recipe_id):
 @recipes.route('/search')
 def search(recipe):
     Recipes.query.all()
-    Recipes.query.filter_by(name="").first()
-    for recipe in Recipes:
+    Recipes.query.filter_by(name="").all()
+    for name in Recipes:
+        if name = query
 
     #Loop through every recipe name
     #Recipe.query.all()
