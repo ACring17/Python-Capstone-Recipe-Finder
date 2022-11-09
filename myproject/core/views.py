@@ -25,9 +25,9 @@ def search_results(search):
         qry = db.session.query(Recipes)
         results = qry.all()
     elif search_string == Recipes.name:
-        # Add recipe to reults list
+        results.append(search_string)
         return results
-    elif not results:
+    elif search_string != Recipes.name:
         flash('No results found!')
         return redirect('/')
     else:
