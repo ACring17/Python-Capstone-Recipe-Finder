@@ -16,7 +16,17 @@
   </form>
 </div>
 
-
+<div>
+  <ul>
+    {% for recipe in recipes %}
+    <li>
+    <h2>{{recipe.name}}</h2>
+    <p>{{recipe.description}}</p>
+    </li>
+    {% endfor %}
+</ul>
+ 
+</div>
 
 
 

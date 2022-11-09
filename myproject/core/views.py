@@ -32,10 +32,10 @@ def search_results(search):
         return render_template('index.html', results=results, form=form)
 
 
-@core.route('/recipes')
-def recipes():
-    return render_template('recipes.html')
+# @core.route('/recipes')
+# def recipes():
+#     return render_template('recipes.html')
 
-@core.route('/ingredient')
-def ingredient():
-    return render_template('ingredient.html')
+# @core.route('/ingredient')
+# def ingredient():
+#     return render_template('ingredient.html')
