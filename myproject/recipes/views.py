@@ -74,21 +74,21 @@ def update(recipe_id):
     return render_template('core.index',form=form)
 
 # Search query
-@recipes.route('/search')
-def search(recipe):
-    Recipes.query.all()
-    all_recipes = Recipes.query.all()
-    for recipe in all_recipes:
-        #Think of how to get the results to render on home page
-        return render_template()
+# @recipes.route('/search', methods=['GET','POST'])
+# def search(recipe):
+#     Recipes.query.all()
+#     all_recipes = Recipes.query.all()
+#     for recipe in all_recipes:
+#         #Think of how to get the results to render on home page
+#         return render_template()
 
     #Loop through every recipe name
     #Recipe.query.all()
     #Loop through db and add to list of results
     #Might not need this code down below
-        query = Recipes.query.options(joinedload(''))
-        for recipe in query:
-            return Recipes.query.with_parent(new_recipes.name).filter('').all()
+        # query = Recipes.query.options(joinedload(''))
+        # for recipe in query:
+        #     return Recipes.query.with_parent(new_recipes.name).filter('').all()
     
     
         
