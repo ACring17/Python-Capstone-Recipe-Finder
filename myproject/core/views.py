@@ -18,17 +18,18 @@ def index():
 
 @core.route('/results')
 def search_results(search):
+    form = SearchForm()
     results = []
     search_string = search.data['search']
     if search.data['search'] == '':
         qry = db.session.query(Recipes)
         results = qry.all()
-    if not results:
-        flash('No results found!')
-        return redirect('/')
+    # if not results:
+    #     flash('No results found!')
+    #     return redirect('/')
     else:
         # display results
-        return render_template('index.html', results=results)
+        return render_template('index.html', results=results, form=form)
 
 
 @core.route('/recipes')
