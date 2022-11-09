@@ -18,13 +18,16 @@ def index():
 
 @core.route('/results')
 def search_results(search):
-    form = SearchForm
+    form = SearchForm()
     results = []
     search_string = search.data['search']
     if search_string == '':
         qry = db.session.query(Recipes)
         results = qry.all()
-    if not results:
+    elif search_string == Recipes.name:
+        # Add recipe to reults list
+        return results
+    elif not results:
         flash('No results found!')
         return redirect('/')
     else:
