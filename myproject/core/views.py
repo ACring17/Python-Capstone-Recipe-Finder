@@ -23,7 +23,8 @@ def search_results(search):
     search_string = search.data['search']
     if search_string == '':
         qry = db.session.query(Recipes)
-        results = qry.all()
+        results_all = qry.all()
+        return results_all
     elif search_string == Recipes.name:
         results.append(search_string)
         return results
