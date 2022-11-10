@@ -7,34 +7,23 @@ core = Blueprint('core', __name__)
 
 @core.route('/', methods=['GET','POST'])
 def index():
-    page = request.args.get('page',1,type=int)
-    review=Rating.query.order_by(Rating.rating_id.desc()).paginate(page=page,per_page=20)
+    #For showing reviews on the home page
+    # page = request.args.get('page',1,type=int)
+    # review=Rating.query.order_by(Rating.rating_id.desc()).paginate(page=page,per_page=20)
    
     #Adding search bar
     search =  SearchForm(request.form)
     if request.method == 'POST':
         return search_results(search)
-    return render_template('index.html',review=review, form=search)
+    return render_template('index.html', form=search)
 
-@core.route('/results')
-def search_results(search):
-    form = SearchForm()
-    results = []
-    search_string = search.data['search']
-    if search_string == '':
-        qry = db.session.query(Recipes)
-        results_all = qry.all()
-        return results_all
-    elif search_string == Recipes.name:
-        results.append(search_string)
-        return results
-    elif search_string != Recipes.name:
-        flash('No results found!')
-        return redirect('/')
-    else:
-        # display results
-        return render_template('index.html', results=results, form=form)
+@core.route('/<int:recipe_id>')
+def search_results(recipe_id):
+    recipe_result = Recipes.query.get_or_404(recipe_id)
+    return render_template('index.html', name=recipe_result.name, directions=recipe_result.direction)
 
+
+# ### Paths for the recipe and ingredients pages ###
 
 # @core.route('/recipes')
 # def recipes():
