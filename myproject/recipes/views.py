@@ -33,7 +33,7 @@ def create_recipe():
 def recipes_list(recipes_id):
     # Grab a list of recipes from database.
     recipes_list = Recipes.query.get_or_404(recipes_id)
-    return render_template('recipe_rating.html', name=recipes_list.name, description=recipes_list.description, directions=recipes_list.direction)
+    return render_template('recipe_rating.html', name=recipes_list.name, directions=recipes_list.direction)
 
 #Delete Method
 @recipes.route('/<int:recipe_id>/delete', methods=['POST'])
@@ -86,10 +86,7 @@ def update(recipe_id):
     #Recipe.query.all()
     #Loop through db and add to list of results
     #Might not need this code down below
-        # query = Recipes.query.options(joinedload(''))
-        # for recipe in query:
-        #     return Recipes.query.with_parent(new_recipes.name).filter('').all()
-    
+
     
         
         
