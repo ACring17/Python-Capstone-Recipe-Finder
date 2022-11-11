@@ -9,18 +9,19 @@ core = Blueprint('core', __name__)
 def index():
     #Adding search bar
     search =  SearchForm(request.form)
-    if search.validate_on_submit():
-        recipes = Recipes(name=search.search.data,
-                        direction=search.search.data)
-        db.session.query(recipes)
-    if request.method == 'POST':
-        return search_results(search)
     return render_template('index.html', form=search)
 
 @core.route('/<int:recipe_id>')
-def search_results(recipes_id):
-    recipe_result = Recipes.query.get_or_404(recipes_id)
-    return render_template('index.html', name=recipe_result.name, directions=recipe_result.direction)
+def search():
+    searchForm = SearchForm()
+    recipes = Recipes.query
+
+    if searchForm.validate_on_submit():
+        recipes = recipes.filter(Recipes.name.like('%' + searchForm.name.data + '%'))
+    
+    recipes = recipes.order_by(Recipes.name).all()
+
+    return render_template('index.html', recipes=recipes)
 
 
 # ### Paths for the recipe and ingredients pages ###
