@@ -18,7 +18,10 @@ def search():
 
     if searchForm.validate_on_submit():
         recipes = recipes.filter(Recipes.name.like('%' + searchForm.name.data + '%'))
-    
+        results = []
+        recipes.append(results)
+        db.session.add(results)
+
     recipes = recipes.order_by(Recipes.name).all()
 
     return render_template('index.html', recipes=recipes)
