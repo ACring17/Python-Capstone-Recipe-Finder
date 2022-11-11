@@ -7,19 +7,19 @@ core = Blueprint('core', __name__)
 
 @core.route('/', methods=['GET','POST'])
 def index():
-    #For showing reviews on the home page
-    # page = request.args.get('page',1,type=int)
-    # review=Rating.query.order_by(Rating.rating_id.desc()).paginate(page=page,per_page=20)
-   
     #Adding search bar
     search =  SearchForm(request.form)
+    if search.validate_on_submit():
+        recipes = Recipes(name=search.search.data,
+                        direction=search.search.data)
+        db.session.query(recipes)
     if request.method == 'POST':
         return search_results(search)
     return render_template('index.html', form=search)
 
 @core.route('/<int:recipe_id>')
-def search_results(recipe_id):
-    recipe_result = Recipes.query.get_or_404(recipe_id)
+def search_results(recipes_id):
+    recipe_result = Recipes.query.get_or_404(recipes_id)
     return render_template('index.html', name=recipe_result.name, directions=recipe_result.direction)
 
 
