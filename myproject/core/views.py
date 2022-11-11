@@ -21,10 +21,11 @@ def search():
         results = []
         recipes.append(results)
         db.session.add(results)
+        db.session.commit()
 
-    recipes = recipes.order_by(Recipes.name).all()
+    results = recipes.order_by(Recipes.name).all()
 
-    return render_template('index.html', recipes=recipes)
+    return render_template('index.html', recipes=recipes, results=results)
 
 
 # ### Paths for the recipe and ingredients pages ###
