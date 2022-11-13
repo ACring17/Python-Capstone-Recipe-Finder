@@ -20,8 +20,8 @@ def search():
     if searchForm.validate_on_submit():
         recipes = searchForm.search#.filter(Recipes.name.like('%' + searchForm.name.data + '%'))    May not need this commented out part.
         results = []
-        recipes.append(results)
-        db.session.add(results)
+        results.append(recipes)
+        db.session.add(results)  #moved bug down to here.
         db.session.commit()
 
     results = recipes #Think how to access the results above and use them in the global sense
