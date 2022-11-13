@@ -11,10 +11,11 @@ def index():
     search =  SearchForm(request.form)
     return render_template('index.html', form=search)
 
-@core.route('/<int:recipe_id>')
+@core.route('/search_recipe', methods=["POST"])
 def search():
+    print("here")
     searchForm = SearchForm()
-    recipes = Recipes.query
+    recipes = Recipes.query.all()
 
     if searchForm.validate_on_submit():
         recipes = recipes.filter(Recipes.name.like('%' + searchForm.name.data + '%'))
@@ -24,6 +25,7 @@ def search():
         db.session.commit()
 
     results = recipes.order_by(Recipes.name).all()
+    print(results)
 
     return render_template('index.html', recipes=recipes, results=results)
 
