@@ -18,7 +18,7 @@ def search():
     recipes = Recipes.query.all()
 
     if searchForm.validate_on_submit():
-        recipes = Recipes.name.filter(Recipes.name.like('%' + searchForm.name.data + '%'))
+        recipes = searchForm.search#.filter(Recipes.name.like('%' + searchForm.name.data + '%'))    May not need this commented out part.
         results = []
         recipes.append(results)
         db.session.add(results)
