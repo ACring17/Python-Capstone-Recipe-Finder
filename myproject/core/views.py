@@ -24,10 +24,10 @@ def search():
         db.session.add(results)
         db.session.commit()
 
-    results = recipes.order_by(Recipes.name).all()
+    results = recipes #Think how to access the results above and use them in the global sense
     print(results)
 
-    return render_template('index.html', recipes=recipes, results=results)
+    return render_template('index.html', recipes=recipes, results=results, form=searchForm)
 
 
 # ### Paths for the recipe and ingredients pages ###
