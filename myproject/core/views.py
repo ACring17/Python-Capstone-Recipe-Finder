@@ -18,14 +18,13 @@ def search():
     recipes = Recipes.query.all()
 
     if searchForm.validate_on_submit():
-        recipes = searchForm.search#.filter(Recipes.name.like('%' + searchForm.name.data + '%'))    May not need this commented out part.
+        recipes = searchForm.search
         results = []
         results.append(recipes)
         return results
-        # db.session.add(results)  #moved bug down to here. Thinking I may need to set up a db for results
+        # db.session.add(results)  #moved bug down to here. Thinking I may not need the db storage for results.
         # db.session.commit()
 
-    results = recipes  #The idea is that I can access what was just put into results
     print(results)
 
     return render_template('index.html', recipes=recipes, results=results, form=searchForm)
