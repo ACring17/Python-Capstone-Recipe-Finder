@@ -21,8 +21,9 @@ def search():
         recipes = searchForm.search#.filter(Recipes.name.like('%' + searchForm.name.data + '%'))    May not need this commented out part.
         results = []
         results.append(recipes)
-        db.session.add(results)  #moved bug down to here. Thinking I may need to set up a db for results
-        db.session.commit()
+        return results
+        # db.session.add(results)  #moved bug down to here. Thinking I may need to set up a db for results
+        # db.session.commit()
 
     results = recipes  #The idea is that I can access what was just put into results
     print(results)
