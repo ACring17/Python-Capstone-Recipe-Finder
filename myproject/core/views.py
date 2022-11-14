@@ -22,8 +22,7 @@ def search():
         results = []
         results.append(recipes)
         return results
-        # db.session.add(results)  #moved bug down to here. Thinking I may not need the db storage for results.
-        # db.session.commit()
+        # Have results showing up now think of how to pull from the json file.
 
     print(results)
 
