@@ -21,12 +21,14 @@ def search():
         recipes = searchForm.search
         results = []
         results.append(recipes)
-        print(results) #too see what i need to change
+        print(results) #too see what is beinging searched
+        # return results
         return render_template('index.html', recipes=recipes, results=results, form=searchForm)
-        # Have results showing up now think of how to pull from the json file.
+        # Current bug is sending name as search and not fetching data from JSON.
 
 
     return render_template('index.html', recipes=recipes, results=results, form=searchForm)
+    # ^ Maybe useless but will keep as a catch all. ^
 
 
 # ### Paths for the recipe and ingredients pages ###
