@@ -23,7 +23,7 @@ def search():
         results = []
         results.append(recipes)
         print(results) #too see what is beinging searched
-        # return results
+        # return results # this will show list of results
         return render_template('index.html', recipes=recipes, results=results, form=searchForm, data=data)
         # Current bug is sending name as search and not fetching data from JSON.
 
