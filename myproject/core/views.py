@@ -21,10 +21,10 @@ def search():
         recipes = searchForm.search
         results = []
         results.append(recipes)
-        return results
+        print(results) #too see what i need to change
+        return render_template('index.html', recipes=recipes, results=results, form=searchForm)
         # Have results showing up now think of how to pull from the json file.
 
-    print(results)
 
     return render_template('index.html', recipes=recipes, results=results, form=searchForm)
 
