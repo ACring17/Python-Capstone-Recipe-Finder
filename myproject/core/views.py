@@ -19,17 +19,17 @@ def search():
     results = []
     data = db #Placeholder for db and json file, does not work
     
-    if searchForm.validate_on_submit():
+    if request.method == "POST" and searchForm.validate_on_submit():
         recipes = searchForm.search
         results.append(recipes)
-        print(results) #too see what is beinging searched
-        # return results # this will show list of results
-        return render_template('index.html', recipes=recipes, results=results, form=searchForm, data=data)
+        print(results)
+        # return results 
+        return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         # Current bug is sending name as search and not fetching data from JSON.
 
 
-    return render_template('index.html', recipes=recipes, results=results, form=searchForm)
-    # ^ Maybe useless but will keep as a catch all. ^
+    # return render_template('index.html', recipes=recipes, results=results, form=searchForm)
+    # ^ Incase I need a render call ^
 
 
 # ### Paths for the recipe and ingredients pages ###
