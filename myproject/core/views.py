@@ -17,11 +17,10 @@ def search():
     searchForm = SearchForm()
     recipes = Recipes.query.all()
     results = []
-    # data = db #Placeholder for db and json file, does not work
+    data = db #Placeholder for db and json file, does not work
     
     if searchForm.validate_on_submit():
         recipes = searchForm.search
-        # results = []
         results.append(recipes)
         print(results) #too see what is beinging searched
         # return results # this will show list of results
