@@ -28,10 +28,6 @@ def search():
         # Current bug is sending name as search and not fetching data from JSON.
 
 
-    # return render_template('index.html', recipes=recipes, results=results, form=searchForm)
-    # ^ Incase I need a render call ^
-
-
 # ### Paths for the recipe and ingredients pages ###
 
 # @core.route('/recipes')
