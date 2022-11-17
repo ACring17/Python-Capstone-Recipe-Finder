@@ -4,7 +4,7 @@ from myproject.models import Rating,Recipes,Ingredient,Users
 from flask import render_template, request, Blueprint,redirect, flash 
 
 core = Blueprint('core', __name__)
-data = db
+data = db #I don't think this works
 
 @core.route('/', methods=['GET','POST'])
 def index():
