@@ -12,7 +12,7 @@ def index():
     search =  SearchForm(request.form)
     return render_template('index.html', form=search)
 
-@core.route('/search_recipe', methods=["POST"])
+@core.route('/search_recipe', methods=["GET","POST"])
 def search():
     searchForm = SearchForm()
     recipes = Recipes.query.all()
