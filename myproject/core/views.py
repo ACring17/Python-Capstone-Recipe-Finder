@@ -21,8 +21,9 @@ def search():
     if searchForm.validate_on_submit():
         recipes = searchForm.search
         results = []
-        results.append(recipes)
-        print(results) #too see what is beinging searched
+        if recipes == db:      #thinking this might be the solution. Added if statement to help facilitate the search through the db
+            results.append(recipes)
+            print(results) #too see what is beinging searched
         # return results # this will show list of results
         return render_template('index.html', recipes=recipes, results=results, form=searchForm, data=data)
         # Current bug is sending name as search and not fetching data from JSON.
