@@ -4,7 +4,7 @@ from myproject.models import Rating,Recipes,Ingredient,Users
 from flask import render_template, request, Blueprint,redirect, flash 
 
 core = Blueprint('core', __name__)
-data = db #I don't think this works
+data = db #I don't think this works, looking to set up db for searh to go through
 
 @core.route('/', methods=['GET','POST'])
 def index():
@@ -21,9 +21,8 @@ def search():
     if searchForm.validate_on_submit():
         recipes = searchForm.search
         results = []
-        if recipes == db:      #thinking this might be the solution. Added if statement to help facilitate the search through the db
-            results.append(recipes)
-            print(results) #too see what is beinging searched
+        results.append(recipes)
+        print(results) #too see what is beinging searched
         # return results # this will show list of results
         return render_template('index.html', recipes=recipes, results=results, form=searchForm, data=data)
         # Current bug is sending name as search and not fetching data from JSON.
