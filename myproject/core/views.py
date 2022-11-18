@@ -1,7 +1,10 @@
+import json
 from myproject import db
 from myproject.core.forms import SearchForm
 from myproject.models import Rating,Recipes,Ingredient,Users
 from flask import render_template, request, Blueprint,redirect, flash 
+from sqlalchemy.orm import joinedload
+
 
 core = Blueprint('core', __name__)
 data = db 
@@ -18,18 +21,17 @@ def search():
     recipes = Recipes.query.all()
     results = []
     
-    
     if request.method == "POST" and searchForm.validate_on_submit():
         recipes = data
         if recipes == data:
             results.append(recipes)
         else:
             Recipes.query.all()
-        # results.append(recipes)
+        
         print(results)
         # return results 
         return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
-        # Current bug is sending name as search and not fetching data from JSON.
+        
 
 
 # ### Paths for the recipe and ingredients pages ###
