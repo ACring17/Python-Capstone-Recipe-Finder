@@ -4,7 +4,7 @@ from myproject.models import Rating,Recipes,Ingredient,Users
 from flask import render_template, request, Blueprint,redirect, flash 
 
 core = Blueprint('core', __name__)
-data = db #I don't think this works, looking to set up db for searh to go through
+data = db 
 
 @core.route('/', methods=['GET','POST'])
 def index():
@@ -17,15 +17,15 @@ def search():
     searchForm = SearchForm()
     recipes = Recipes.query.all()
     results = []
-    data = db #Placeholder for db and json file, does not work
+    
     
     if request.method == "POST" and searchForm.validate_on_submit():
-        recipes = searchForm.search
-        # if recipes == data:
-        #     results.append(recipes)
-        # else:
-        #     Recipes.query.all()
-        results.append(recipes)
+        recipes = data
+        if recipes == data:
+            results.append(recipes)
+        else:
+            Recipes.query.all()
+        # results.append(recipes)
         print(results)
         # return results 
         return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
