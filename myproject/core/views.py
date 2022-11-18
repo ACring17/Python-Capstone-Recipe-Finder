@@ -21,7 +21,10 @@ def search():
     
     if request.method == "POST" and searchForm.validate_on_submit():
         recipes = searchForm.search
-        results.append(recipes)
+        if recipes == data:
+            results.append(recipes)
+        else:
+            Recipes.query.all()
         print(results)
         # return results 
         return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
