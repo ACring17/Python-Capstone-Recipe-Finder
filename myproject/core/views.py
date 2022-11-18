@@ -25,13 +25,13 @@ def search():
          for r in data['recipes']:
             if request.form['search'] == r['name']:
                 results.append(r)
+                results.append(r['steps'])
             return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
          print(results)
         # return results 
          return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
-#Help in tango. I can't figure out how to get the search function to loop through json file.
 
  ### Paths for the recipe and ingredients pages ###
 
