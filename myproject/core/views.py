@@ -7,7 +7,7 @@ from sqlalchemy.orm import joinedload
 
 
 core = Blueprint('core', __name__)
-data = db 
+data = json.load(open('../recipes/seed.json'))
 
 @core.route('/', methods=['GET','POST'])
 def index():
@@ -22,19 +22,16 @@ def search():
     results = []
     
     if request.method == "POST" and searchForm.validate_on_submit():
-        recipes = data
-        if recipes == data:
-            results.append(recipes)
-        else:
-            Recipes.query.all()
+         for r in data['recipes']:
+            if request.form['Search'] == r['name']:
         
         print(results)
         # return results 
         return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
+#Help in tango. I can't figure out how to get the search function to loop through json file.
 
-
-# ### Paths for the recipe and ingredients pages ###
+ ### Paths for the recipe and ingredients pages ###
 
 # @core.route('/recipes')
 # def recipes():
