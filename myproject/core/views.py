@@ -32,7 +32,7 @@ def search():
         # return results 
          return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
-    # return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
+    return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
  ### Paths for the recipe and ingredients pages ###
 
 # @core.route('/recipes')
