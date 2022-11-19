@@ -25,10 +25,10 @@ def search():
          for r in data['recipes']:
             if request.form['search'] == r['name']:
                 results.append(r)
-                results.append(r['steps'])   
+                # results.append(r['steps'])   
             return render_template('index.html',recipes=recipes, results=results, form=searchForm)
         
-         print(results)
+        #  print(results)
         # return results 
          return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
