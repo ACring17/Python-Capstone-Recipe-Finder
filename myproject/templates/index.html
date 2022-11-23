@@ -21,7 +21,8 @@
     {% for recipe in results %}
     <li>
     <h2>{{recipe.name}}</h2>
-    <p>{{recipe.steps}}</p>
+    <p>{{recipe.steps[0]}}</p>
+
     </li>
     {% endfor %}
 </ul>
