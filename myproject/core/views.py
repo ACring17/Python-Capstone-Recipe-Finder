@@ -28,7 +28,6 @@ def search():
             return render_template('index.html',recipes=recipes, results=results, form=searchForm)
         
         #  print(results)
-        # return results 
          return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
     return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
