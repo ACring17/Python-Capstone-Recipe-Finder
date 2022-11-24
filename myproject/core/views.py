@@ -25,9 +25,9 @@ def search():
          for r in data['recipes']:
             if request.form['search'] == r['name']:
                 results.append(r)  
+                print(results)
             return render_template('index.html',recipes=recipes, results=results, form=searchForm)
         
-        #  print(results)
          return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
     return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
