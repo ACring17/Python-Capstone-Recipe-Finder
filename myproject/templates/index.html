@@ -31,7 +31,9 @@
     
     <h3>Directions</h3>
     <ul>
-      <li>{{ recipe.steps|join(', ') }}</li>
+        {% for step in recipe.steps %}
+      <li>{{ step }}</li>
+        {% endfor %}
     </ul>
     {% endfor %}
 
