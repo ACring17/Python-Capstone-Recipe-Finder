@@ -24,11 +24,9 @@
   
     <h3>Ingredients</h3>
     <ul>
-    <li>{{ recipe.ingredients[0].name }}</li>
-    <li>{{ recipe.ingredients[1].name }}</li>
-    <li>{{ recipe.ingredients[2].name }}</li>
-    <li>{{ recipe.ingredients[3]['name'] }}</li>
-    <li>{{ recipe.ingredients[4]['name'] }}</li>
+      {% for ingredient in recipe.ingredients %}
+    <li>{{ ingredient['name'] }}</li>
+      {% endfor %}
     </ul>
     
     <h3>Directions</h3>
