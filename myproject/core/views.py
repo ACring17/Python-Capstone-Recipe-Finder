@@ -24,8 +24,7 @@ def search():
     if request.method == "POST" and searchForm.validate_on_submit():
          for r in data['recipes']:
             if request.form['search'] == r['name']:
-                results.append(r)  
-                print(results)
+                results.append(r)
                 return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
             else:
                 pass
