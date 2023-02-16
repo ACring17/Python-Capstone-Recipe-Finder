@@ -30,10 +30,11 @@ def search():
             else:
                 pass
         
-         return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
+        #  return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
+        # Working on adding in the ingredient search function, just added this but not getting the results I want.
     if request.method == "POST" and searchForm.validate_on_submit():
-         for i in data['ingredients']:
+         for i in data['recipes']:
             if request.form['search'] == i['name']:
                 results.append(i)
                 return render_template('index.html',recipes=recipes, ingredients=ingredients, results=results, form=searchForm, data=data)
@@ -41,6 +42,7 @@ def search():
                 pass
         
          return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
+
     return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
  ### Paths for the recipe and ingredients pages ###
 
