@@ -19,6 +19,7 @@ def index():
 def search():
     searchForm = SearchForm()
     recipes = Recipes.query.all()
+    ingredients = Ingredient.query.all()
     results = []
     
     if request.method == "POST" and searchForm.validate_on_submit():
@@ -31,6 +32,15 @@ def search():
         
          return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
         
+    if request.method == "POST" and searchForm.validate_on_submit():
+         for i in data['ingredients']:
+            if request.form['search'] == i['name']:
+                results.append(i)
+                return render_template('index.html',recipes=recipes, ingredients=ingredients, results=results, form=searchForm, data=data)
+            else:
+                pass
+        
+         return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
     return render_template('index.html',recipes=recipes, results=results, form=searchForm, data=data)
  ### Paths for the recipe and ingredients pages ###
 
