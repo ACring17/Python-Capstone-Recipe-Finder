@@ -7,12 +7,12 @@ Youtube link of Capstone presenation for DevMountain: https://www.youtube.com/wa
 
 
 ## Technologies Used:
-⋅⋅* Python
-⋅⋅* Flask
-⋅⋅* Flask-login
-⋅⋅* SQLAlchemy
-⋅⋅* WTForms
-..* Bootstrap
+* Python
+* Flask
+* Flask-login
+* SQLAlchemy
+* WTForms
+* Bootstrap
 
 The application allows users to register a user profile, allow the user to login or logout, rate and review recipes, leave notes on what they would do differently, and add their own recipe to the database. 
 
