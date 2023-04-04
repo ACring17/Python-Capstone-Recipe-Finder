@@ -15,4 +15,20 @@ The application allows users to register a user profile, allow the user to login
 
 The users will be able to search for recipes based off ingredients they have in their pantry. The idea came to me one evening when I had a bunch of random left over ingredients in my pantry and I was curious to know if I could make a meal out of what I. 
 
+## Home Screen and Main Search Function
 ![image](https://user-images.githubusercontent.com/66842994/216785231-2eb2922c-b7df-4056-9612-4cdde642463d.png)
+
+## Profile Page
+![image](images/profile-page.png)
+
+## Add Recipe Function
+![image](images/add-recipe.png)
+
+## Add Rating
+![image](images/add-review.png)
+
+## User Registration
+![image](images/registration.png)
+
+## User Login
+![image](images/login.png)
