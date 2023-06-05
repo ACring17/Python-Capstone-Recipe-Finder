@@ -20,6 +20,7 @@ For quick recipe searches for users who do not want to make a profile and want a
 ![image](https://user-images.githubusercontent.com/66842994/216785231-2eb2922c-b7df-4056-9612-4cdde642463d.png)
 
 ## Profile Page
+Allows users to create a profile and track their recipes.
 ![image](images/profile-page.png)
 
 ## Add Recipe Function
