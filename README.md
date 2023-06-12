@@ -24,6 +24,7 @@ Allows users to create a profile and track their recipes.
 ![image](images/profile-page.png)
 
 ## Add Recipe Function
+Allows users to add recipes to the database of recipes
 ![image](images/add-recipe.png)
 
 ## Add Rating
