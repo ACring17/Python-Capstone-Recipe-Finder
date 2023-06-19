@@ -28,6 +28,7 @@ Allows users to add recipes to the database of recipes
 ![image](images/add-recipe.png)
 
 ## Add Rating
+Allows the user to rate the recipe they just made and leave notes for the next time they attempt to make the recipe.
 ![image](images/add-review.png)
 
 ## User Registration
