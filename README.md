@@ -32,6 +32,7 @@ Allows the user to rate the recipe they just made and leave notes for the next t
 ![image](images/add-review.png)
 
 ## User Registration
+Allows users to register a profile and set their username and password.
 ![image](images/registration.png)
 
 ## User Login
