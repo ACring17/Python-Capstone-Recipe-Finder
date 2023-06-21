@@ -36,4 +36,5 @@ Allows users to register a profile and set their username and password.
 ![image](images/registration.png)
 
 ## User Login
+Allows the user to use their credentials to login into their profile.
 ![image](images/login.png)
