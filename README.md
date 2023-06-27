@@ -20,11 +20,11 @@ The users will be able to search for recipes based off ingredients they have in 
 ![image](https://user-images.githubusercontent.com/66842994/216785231-2eb2922c-b7df-4056-9612-4cdde642463d.png)
 
 ## Profile Page
-* Allows users to create a profile and track their recipes.
+* Allows users to create a profile and track their recipes they add or want to try.
 ![image](images/profile-page.png)
 
 ## Add Recipe Function
-* Allows users to add recipes to the database of recipes
+* Allows users to add recipes to the database of recipes.
 ![image](images/add-recipe.png)
 
 ## Add Rating
