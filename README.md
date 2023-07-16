@@ -22,6 +22,7 @@ The users will be able to search for recipes based off ingredients they have in 
 
 ## Profile Page
 * Allows users to create a profile and track their recipes they add or want to try.
+* Users can change their username or name at anytime.
 ![image](images/profile-page.png)
 
 ## Add Recipe Function
